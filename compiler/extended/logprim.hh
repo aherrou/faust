@@ -42,7 +42,7 @@ class LogPrim : public xtended {
         if (i.isValid()) {
             // log(0) gives -INF but is still in the function domain
             if (i.lo() >= 0) {
-                return castInterval(floatCast(args[0]), interval(log(i.lo()), log(i.hi())));
+                return castInterval(floatCast(t), gAlgebra.Log(i)); // same as the default condition: useful?
             } else if (gGlobal->gMathExceptions) {
                 std::stringstream error;
                 error << "WARNING : potential out of domain in log(" << i << ")" << std::endl;
